@@ -359,8 +359,6 @@
 
     @media (max-width: 500px) {
         .values span { margin-top: 5px; }
-        .series .item { width: 100%; }
-
         input[type=range] { 
             width: 100%; 
             margin-bottom: 10px;
