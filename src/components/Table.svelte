@@ -71,7 +71,7 @@
 </div>
 
 <style>
-    .table-wrapper {
+    :global(:root) {
         --cell-size: calc((100% - 113px) / 18);
         --ix-size-full: calc(var(--cell-size) + 5px);
         --cell-size-full: calc(var(--cell-size) + 4px);
@@ -128,7 +128,7 @@
 
     @media (max-width: 700px) {
         .table { overflow: auto; }
-        .table-wrapper {
+        :global(:root) {
             --cell-size: 40px;
             --ix-size-full: calc(var(--cell-size) + 4px);
         }

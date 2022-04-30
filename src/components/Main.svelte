@@ -131,38 +131,31 @@
             >{name}</span>
         {/each}
 
-        {#if moreFilters}
-            <br/><br/>
-
-            {#each Object.entries(STATE_COLORS) as [name, color]}
-                <span 
-                    class="item" 
-                    style="color: {color}; background-color: var(--btn-bg);"
-                    on:click={() => displayElementsWithState(name)}
-                >{name}</span>
-            {/each}
-
-            <span 
-                class="item" 
-                style="background-color: var(--btn-bg); margin-right: -2px;" 
-                on:click={() => displayElementsWithFilter(x => METALS.includes(x.ctg))}
-            >Metal</span>
-
-            <span 
-                class="item" 
-                style="background-color: var(--btn-bg);" 
-                on:click={() => displayElementsWithFilter(x => NON_METALS.includes(x.ctg))}
-            >Non Metal</span>
-        {/if}
+        <span 
+            class="item" 
+            style="background-color: var(--btn-bg); margin-right: -2px;" 
+            on:click={() => displayElementsWithFilter(x => METALS.includes(x.ctg))}
+        >Metal</span>
 
         <span 
             class="item" 
-            style="background-color: var(--fg); color: var(--bg);"
-            on:click={() => {
-                if (moreFilters) normalizeTableDisplay();
-                moreFilters = !moreFilters;
-            }}
-        >...</span>
+            style="background-color: var(--btn-bg);" 
+            on:click={() => displayElementsWithFilter(x => NON_METALS.includes(x.ctg))}
+        >Non Metal</span> <br/>
+        
+        <div class="flex flex-wrap">
+            {#each Object.entries(STATE_COLORS) as [n, color]}
+                <span 
+                    class="item-state" 
+                    style="color: {color}; background-color: {SERIES_COLORS['diatomic nonmetal']};"
+                    on:click={() => displayElementsWithState(n)}
+                >
+                    <p>1</p>
+                    <h3>H</h3>
+                    <p class="trim-text">{n}</p>
+                </span>
+            {/each}
+        </div>
     </div>
 
     <div class="inputs flex flex-wrap">
@@ -205,7 +198,7 @@
         border-radius: 5px;
     }
 
-    .display-element * { margin: 0; }
+    .display-element *, .item-state * { margin: 0; }
     .display-element h3 { font-size: var(--h2-size); }
 
     .display-element h3:hover {
@@ -255,6 +248,15 @@
         -webkit-filter: brightness(120%);
     }
 
+    .item-state {
+        text-align: left!important;
+        border-radius: 2px;
+        width: var(--cell-size);
+    }
+
+    .item-state p { font-size: 12px; }
+    .item-state h3 { font-size: 20px; }
+
     .values { margin-top: 10px; }
     .values span p:first-child { margin-right: 5px; }
 
@@ -273,7 +275,7 @@
     input[type=number] {
         outline: none;
         border-radius: 3px;
-        border: 2px solid var(--dark-fg);
+        border: 1px solid var(--dark-fg);
     }
 
     input[type=range] {
@@ -358,7 +360,8 @@
 
     @media (max-width: 500px) {
         .values span { margin-top: 5px; }
-        
+        .series .item { width: 100%; }
+
         input[type=range] { 
             width: 100%; 
             margin-bottom: 10px;

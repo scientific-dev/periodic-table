@@ -1,14 +1,14 @@
 <script>
     import { SERIES_COLORS } from '../utils/constants';
 
-    export let element, handler;
+    export let element, handler, fg = 'white';
     
     let bg = SERIES_COLORS[element.ctg] || SERIES_COLORS.unknown;
 </script>
 
 <div 
     class="element transition" 
-    style="--bg: {bg}; --fg: white;" id="elem-{element.sym}"
+    style="--bg: {bg}; --fg: {fg};" id="elem-{element.sym}"
     on:click={() => handler(element)}
 >
     <p>{element.n}</p>
