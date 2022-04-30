@@ -10,12 +10,12 @@
 	const manageDarkModeClass = () => document.body.classList[darkMode ? 'add' : 'remove']('darkmode');
 
 	onMount(() => {
-		darkMode = Boolean(JSON.parse(localStorage.getItem('dark_mode') || ''));
+		darkMode = Boolean(JSON.parse(localStorage.getItem('dark_mode') || 'false'));
 		manageDarkModeClass();
 	});
 
 	// TODO(scientific-dev): Change fetch url later...
-	fetch('/elements.json')
+	fetch('./elements.json')
 		.then(res => res.json())
 		.then(x => elements = x, () => elements = "error");
 </script>
@@ -24,7 +24,7 @@
 	<h1 class="m-0">The Periodic Table</h1>
 
 	<a 
-		href="/#"
+		href="./#"
 		on:click={() => {
 			darkMode = !darkMode;
 			localStorage.setItem('dark_mode', JSON.stringify(darkMode));

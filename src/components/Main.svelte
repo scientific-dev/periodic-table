@@ -115,9 +115,9 @@
         <div style="margin-top: 20px">
             {#if detailsExpanded}
                 <a href={displayElement.src} target="_blank">Read more from Wikipedia</a>
-                <a href="/#" on:click={() => detailsExpanded = false}>Read less</a>
+                <a href="./#" on:click={() => detailsExpanded = false}>Read less</a>
             {:else}
-                <a href="/#" on:click={() => detailsExpanded = true}>Read more</a>
+                <a href="./#" on:click={() => detailsExpanded = true}>Read more</a>
             {/if}
         </div>
     </div>
