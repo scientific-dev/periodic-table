@@ -103,7 +103,7 @@
         <h3 class="m-0" on:click={() => window.open(displayElement.src)}>{displayElement.nm}</h3>
         <p>{displayElement.des || 'No Description Available'}</p>
 
-        <div class="values flex flex-wrap">
+        <div class="values">
             {#each detailsExpanded ? Object.entries(PROPS) : Object.entries(PROPS).slice(0, 3) as [id, name]}
                 <span>
                     <p class="strong">{name}:</p>
@@ -198,6 +198,8 @@
 </div>
 
 <style>
+    .main {}
+
     .display-element {
         margin-bottom: 20px;
         padding: min(2vw, 2vh);
@@ -283,35 +285,35 @@
 
     input[type=range]::-webkit-slider-thumb {
         -webkit-appearance: none;
-        height: min(3.5vw, 3.5vh);
-        width: min(2vw, 2vh);
+        height: 24px;
+        width: 15px;
         border-radius: 2px;
         background-color: white;
-        margin-top: min(-0.125vw, -0.125vh);
+        margin-top: -2px;
         box-shadow: .5px .5px 0px #868686, 0px 0px 1px #0d0d0d;
     }
 
     input[type=range]::-moz-range-thumb {
-        height: min(3.5vw, 3.5vh);
-        width: min(2vw, 2vh);
+        height: 24px;
+        width: 15px;
         border-radius: 2px;
         background-color: white;
-        margin-top: min(-0.125vw, -0.125vh);
+        margin-top: -2px;
         box-shadow: .5px .5px 0px #868686, 0px 0px 1px #0d0d0d;
     }
 
     input[type=range]::-ms-thumb {
-        height: min(3.5vw, 3.5vh);
-        width: min(2vw, 2vh);
+        height: 24px;
+        width: 15px;
         border-radius: 2px;
         background-color: white;
-        margin-top: min(-0.125vw, -0.125vh);
+        margin-top: -2px;
         box-shadow: .5px .5px 0px #868686, 0px 0px 1px #0d0d0d;
     }
 
     input[type=range]::-webkit-slider-runnable-track {
         width: 100%;
-        height: min(3vw, 3vh);
+        height: 20px;
         border-radius: 3px;
         cursor: pointer;
         background: linear-gradient(to right, lightblue, yellow, red);
@@ -319,7 +321,7 @@
 
     input[type=range]::-moz-track {
         width: 100%;
-        height: min(3vw, 3vh);
+        height: 20px;
         border-radius: 3px;
         cursor: pointer;
         background: linear-gradient(to right, lightblue, yellow, red);
@@ -327,7 +329,7 @@
 
     input[type=range]::-ms-track {
         width: 100%;
-        height: min(3vw, 3vh);
+        height: 20px;
         border-radius: 3px;
         cursor: pointer;
         background: linear-gradient(to right, lightblue, yellow, red);
@@ -341,7 +343,12 @@
     }
 
     @media (min-width: 500px) {
-        .values { flex-direction: row; }
+        .values { 
+            display: flex; 
+            flex-wrap: wrap;
+            flex-direction: row; 
+        }
+
         .values span {
             max-width: 50%;
             flex: 0 0 50%;
@@ -351,5 +358,9 @@
 
     @media (max-width: 500px) {
         .values span { margin-top: 5px; }
+        input[type=range] { 
+            width: 100%; 
+            margin-bottom: 10px;
+        }
     }
 </style>
