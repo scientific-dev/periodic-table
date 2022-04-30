@@ -251,11 +251,12 @@
         text-align: left!important;
         border-radius: 2px;
         width: var(--cell-size);
+        text-shadow: 1px 1px 0 var(--dark);
+        filter: brightness(110%);
+        -webkit-filter: brightness(110%);
     }
 
-    .item-state p { font-size: 12px; }
-    .item-state h3 { font-size: 20px; }
-
+    .item-state p { font-size: var(--font-size); }
     .values { margin-top: 10px; }
     .values span p:first-child { margin-right: 5px; }
 
@@ -266,7 +267,6 @@
     }
 
     .footer a { color: var(--fg); }
-    
     .inputs { margin-bottom: min(5vw, 5vh); }
     .inputs div { margin: 0 5px; }
     .inputs p { margin: 4px; }
@@ -359,6 +359,8 @@
 
     @media (max-width: 500px) {
         .values span { margin-top: 5px; }
+        .item-state h3 { font-size: calc(var(--font-size) + 2px); }
+
         input[type=range] { 
             width: 100%; 
             margin-bottom: 10px;
