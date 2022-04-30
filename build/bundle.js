@@ -1629,9 +1629,9 @@ var app = (function () {
     		c: function create() {
     			a = element("a");
     			a.textContent = "Read more";
-    			attr_dev(a, "href", "/#");
+    			attr_dev(a, "href", "./#");
     			attr_dev(a, "class", "svelte-qjazaj");
-    			add_location(a, file$1, 119, 16, 4255);
+    			add_location(a, file$1, 119, 16, 4256);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -1681,7 +1681,7 @@ var app = (function () {
     			attr_dev(a0, "target", "_blank");
     			attr_dev(a0, "class", "svelte-qjazaj");
     			add_location(a0, file$1, 116, 16, 4058);
-    			attr_dev(a1, "href", "/#");
+    			attr_dev(a1, "href", "./#");
     			attr_dev(a1, "class", "svelte-qjazaj");
     			add_location(a1, file$1, 117, 16, 4149);
     		},
@@ -1739,7 +1739,7 @@ var app = (function () {
     			t = text(t_value);
     			attr_dev(span, "class", "item svelte-qjazaj");
     			set_style(span, "background-color", /*color*/ ctx[26]);
-    			add_location(span, file$1, 126, 12, 4487);
+    			add_location(span, file$1, 126, 12, 4489);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1806,15 +1806,15 @@ var app = (function () {
     			t3 = space();
     			span1 = element("span");
     			span1.textContent = "Non Metal";
-    			add_location(br0, file$1, 134, 12, 4744);
-    			add_location(br1, file$1, 134, 17, 4749);
+    			add_location(br0, file$1, 134, 12, 4746);
+    			add_location(br1, file$1, 134, 17, 4751);
     			attr_dev(span0, "class", "item svelte-qjazaj");
     			set_style(span0, "background-color", "var(--btn-bg)");
     			set_style(span0, "margin-right", "-2px");
-    			add_location(span0, file$1, 144, 12, 5098);
+    			add_location(span0, file$1, 144, 12, 5100);
     			attr_dev(span1, "class", "item svelte-qjazaj");
     			set_style(span1, "background-color", "var(--btn-bg)");
-    			add_location(span1, file$1, 150, 12, 5346);
+    			add_location(span1, file$1, 150, 12, 5348);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, br0, anchor);
@@ -1908,7 +1908,7 @@ var app = (function () {
     			attr_dev(span, "class", "item svelte-qjazaj");
     			set_style(span, "color", /*color*/ ctx[26]);
     			set_style(span, "background-color", "var(--btn-bg)");
-    			add_location(span, file$1, 137, 16, 4841);
+    			add_location(span, file$1, 137, 16, 4843);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -2098,48 +2098,48 @@ var app = (function () {
     			attr_dev(span, "class", "item svelte-qjazaj");
     			set_style(span, "background-color", "var(--fg)");
     			set_style(span, "color", "var(--bg)");
-    			add_location(span, file$1, 157, 8, 5593);
+    			add_location(span, file$1, 157, 8, 5595);
     			attr_dev(div3, "class", "series svelte-qjazaj");
-    			add_location(div3, file$1, 124, 4, 4376);
+    			add_location(div3, file$1, 124, 4, 4378);
     			attr_dev(input0, "type", "range");
     			attr_dev(input0, "min", "0");
     			attr_dev(input0, "max", "6000");
     			attr_dev(input0, "default", "0");
     			attr_dev(input0, "class", "svelte-qjazaj");
-    			add_location(input0, file$1, 168, 8, 5931);
+    			add_location(input0, file$1, 168, 8, 5933);
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "min", "0");
     			attr_dev(input1, "max", "6000");
     			attr_dev(input1, "class", "svelte-qjazaj");
-    			add_location(input1, file$1, 171, 12, 6058);
+    			add_location(input1, file$1, 171, 12, 6060);
     			attr_dev(p1, "class", "svelte-qjazaj");
-    			add_location(p1, file$1, 172, 12, 6134);
+    			add_location(p1, file$1, 172, 12, 6136);
     			attr_dev(div4, "class", "flex flex-nowrap svelte-qjazaj");
-    			add_location(div4, file$1, 170, 8, 6014);
+    			add_location(div4, file$1, 170, 8, 6016);
     			attr_dev(input2, "type", "number");
     			attr_dev(input2, "min", "-273");
     			attr_dev(input2, "max", "5727");
     			input2.value = /*celsiusTemp*/ ctx[2];
     			attr_dev(input2, "class", "svelte-qjazaj");
-    			add_location(input2, file$1, 176, 12, 6214);
+    			add_location(input2, file$1, 176, 12, 6216);
     			attr_dev(p2, "class", "svelte-qjazaj");
-    			add_location(p2, file$1, 183, 12, 6454);
+    			add_location(p2, file$1, 183, 12, 6456);
     			attr_dev(div5, "class", "flex flex-nowrap svelte-qjazaj");
-    			add_location(div5, file$1, 175, 8, 6170);
+    			add_location(div5, file$1, 175, 8, 6172);
     			attr_dev(div6, "class", "inputs flex flex-wrap svelte-qjazaj");
-    			add_location(div6, file$1, 167, 4, 5886);
-    			add_location(div7, file$1, 187, 4, 6499);
+    			add_location(div6, file$1, 167, 4, 5888);
+    			add_location(div7, file$1, 187, 4, 6501);
     			set_style(hr, "margin-top", "40px");
-    			add_location(hr, file$1, 191, 4, 6610);
+    			add_location(hr, file$1, 191, 4, 6612);
     			attr_dev(a, "class", "strong svelte-qjazaj");
     			attr_dev(a, "href", "https://github.com/scientific-dev");
-    			add_location(a, file$1, 194, 31, 6705);
+    			add_location(a, file$1, 194, 31, 6707);
     			attr_dev(p3, "class", "m-0");
-    			add_location(p3, file$1, 194, 8, 6682);
+    			add_location(p3, file$1, 194, 8, 6684);
     			set_style(p4, "margin-top", "4px");
-    			add_location(p4, file$1, 195, 8, 6796);
+    			add_location(p4, file$1, 195, 8, 6798);
     			attr_dev(div8, "class", "footer svelte-qjazaj");
-    			add_location(div8, file$1, 193, 4, 6652);
+    			add_location(div8, file$1, 193, 4, 6654);
     			attr_dev(div9, "class", "main");
     			attr_dev(div9, "id", "main");
     			add_location(div9, file$1, 100, 0, 3369);
@@ -2835,10 +2835,10 @@ var app = (function () {
     			if_block.c();
     			attr_dev(h1, "class", "m-0 svelte-16fa7fn");
     			add_location(h1, file, 23, 1, 662);
-    			attr_dev(a, "href", "/#");
+    			attr_dev(a, "href", "./#");
     			attr_dev(a, "class", "svelte-16fa7fn");
     			add_location(a, file, 25, 1, 706);
-    			add_location(hr, file, 34, 1, 925);
+    			add_location(hr, file, 34, 1, 926);
     			attr_dev(div, "class", "main svelte-16fa7fn");
     			add_location(div, file, 22, 0, 641);
     		},
