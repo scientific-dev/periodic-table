@@ -9,7 +9,6 @@
         celsiusTemp = -273,
         displayElement = elements[0],
         detailsExpanded = false,
-        moreFilters = false,
         stateDisplay = null;
 
     function onHashChange () {
