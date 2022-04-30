@@ -2834,13 +2834,13 @@ var app = (function () {
     			t6 = space();
     			if_block.c();
     			attr_dev(h1, "class", "m-0 svelte-16fa7fn");
-    			add_location(h1, file, 23, 1, 656);
+    			add_location(h1, file, 23, 1, 657);
     			attr_dev(a, "href", "/#");
     			attr_dev(a, "class", "svelte-16fa7fn");
-    			add_location(a, file, 25, 1, 700);
-    			add_location(hr, file, 34, 1, 919);
+    			add_location(a, file, 25, 1, 701);
+    			add_location(hr, file, 34, 1, 920);
     			attr_dev(div, "class", "main svelte-16fa7fn");
-    			add_location(div, file, 22, 0, 635);
+    			add_location(div, file, 22, 0, 636);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2932,7 +2932,7 @@ var app = (function () {
     	});
 
     	// TODO(scientific-dev): Change fetch url later...
-    	fetch('/elements.json').then(res => res.json()).then(x => $$invalidate(0, elements = x), () => $$invalidate(0, elements = "error"));
+    	fetch('./elements.json').then(res => res.json()).then(x => $$invalidate(0, elements = x), () => $$invalidate(0, elements = "error"));
 
     	const writable_props = [];
 
