@@ -198,8 +198,6 @@
 </div>
 
 <style>
-    .main {}
-
     .display-element {
         margin-bottom: 20px;
         padding: min(2vw, 2vh);
@@ -272,8 +270,10 @@
     .inputs div { margin: 0 5px; }
     .inputs p { margin: 4px; }
 
-    .inputs input[type=number] {
+    input[type=number] {
         outline: none;
+        border-radius: 3px;
+        border: 2px solid var(--dark-fg);
     }
 
     input[type=range] {
@@ -358,9 +358,11 @@
 
     @media (max-width: 500px) {
         .values span { margin-top: 5px; }
+        
         input[type=range] { 
             width: 100%; 
             margin-bottom: 10px;
+            margin-left: 5px;
         }
     }
 </style>
