@@ -1,0 +1,56 @@
+:root {
+	--dark: #18181d;
+	--bg: white;
+	--fg: var(--dark);
+	--dark-fg: black;
+	--btn-bg: #18181d;
+	--h1-size: 50px;
+	--h2-size: 35px;
+}
+
+html { scroll-behavior: smooth; }
+
+body { 
+	margin: 0;
+	background-color: white;
+	color: black;
+	font-family: "Recursive";
+}
+
+.darkmode {
+	color: white;
+	background-color: var(--dark);
+
+	--fg: white;
+	--dark-fg: rgb(236, 236, 236);
+	--btn-bg: #26262c;
+	--bg: var(--dark);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--fg); }
+
+/** Global CSS */
+
+@media (max-width: 600px) {
+	:root {
+		--h1-size: 30px;
+		--h2-size: 25px;
+	}
+}
+
+/** Optional configurable css class names */
+
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.strong { font-weight: bold; }
+.m-0 { margin: 0; }
+
+.transition {
+	transition: .2s;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+}
