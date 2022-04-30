@@ -2834,13 +2834,13 @@ var app = (function () {
     			t6 = space();
     			if_block.c();
     			attr_dev(h1, "class", "m-0 svelte-16fa7fn");
-    			add_location(h1, file, 23, 1, 657);
+    			add_location(h1, file, 23, 1, 662);
     			attr_dev(a, "href", "/#");
     			attr_dev(a, "class", "svelte-16fa7fn");
-    			add_location(a, file, 25, 1, 701);
-    			add_location(hr, file, 34, 1, 920);
+    			add_location(a, file, 25, 1, 706);
+    			add_location(hr, file, 34, 1, 925);
     			attr_dev(div, "class", "main svelte-16fa7fn");
-    			add_location(div, file, 22, 0, 636);
+    			add_location(div, file, 22, 0, 641);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2927,7 +2927,7 @@ var app = (function () {
     	const manageDarkModeClass = () => document.body.classList[darkMode ? 'add' : 'remove']('darkmode');
 
     	onMount(() => {
-    		$$invalidate(1, darkMode = Boolean(JSON.parse(localStorage.getItem('dark_mode') || '')));
+    		$$invalidate(1, darkMode = Boolean(JSON.parse(localStorage.getItem('dark_mode') || 'false')));
     		manageDarkModeClass();
     	});
 
