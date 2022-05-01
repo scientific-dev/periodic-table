@@ -251,8 +251,6 @@
         text-align: left!important;
         border-radius: 2px;
         width: var(--cell-size);
-        filter: brightness(110%);
-        -webkit-filter: brightness(110%);
     }
 
     .item-state p { font-size: var(--font-size); }

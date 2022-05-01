@@ -14,8 +14,8 @@ export const SERIES_COLORS = {
 
 export const STATE_COLORS = {
     'solid': 'white',
-    'liquid': '#7db7ff',
-    'gas': '#ff8880',
+    'liquid': '#a3ccff',
+    'gas': '#ffa49e',
     'unknown': '#d4d4d4'
 }
 
