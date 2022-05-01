@@ -251,7 +251,6 @@
         text-align: left!important;
         border-radius: 2px;
         width: var(--cell-size);
-        text-shadow: 1px 1px 0 var(--dark);
         filter: brightness(110%);
         -webkit-filter: brightness(110%);
     }

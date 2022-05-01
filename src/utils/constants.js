@@ -8,7 +8,7 @@ export const SERIES_COLORS = {
     'noble gas': '#3a2151',
     'metalloid': '#015146',
     'polyatomic nonmetal': '#3e6418',
-    'diatomic nonmetal': '#629e26',
+    'diatomic nonmetal': '#63a125',
     'unknown': '#545454'
 }
 
