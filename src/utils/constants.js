@@ -1,16 +1,16 @@
-export const SERIES_COLORS = {
-    'alkali metal': '#6c3b01',
-    'alkaline earth metal': '#846011',
-    'lanthanide': '#402c17',
-    'actinide': '#732e4c',
-    'post-transition metal': '#003666',
-    'transition metal': '#711019',
-    'noble gas': '#3a2151',
-    'metalloid': '#015146',
-    'polyatomic nonmetal': '#3e6418',
-    'diatomic nonmetal': '#63a125',
-    'unknown': '#545454'
-}
+export const VALID_SERIES = [
+    'alkali metal',
+    'alkaline earth metal',
+    'lanthanide',
+    'actinide',
+    'post-transition metal',
+    'transition metal',
+    'noble gas',
+    'metalloid',
+    'polyatomic nonmetal',
+    'diatomic nonmetal',
+    'unknown'
+];
 
 export const STATE_COLORS = {
     'solid': 'white',
@@ -20,6 +20,7 @@ export const STATE_COLORS = {
 }
 
 export const STATE_COLORS_REV = Object.fromEntries(Object.entries(STATE_COLORS).map(x => x.reverse()));
+export const SERIES_CSS_CODE = Object.fromEntries(VALID_SERIES.map(x => [x, `var(--${x.replace(/ /g, '-')}-series)`]));
 
 export const METALS = [
     'alkali metal',

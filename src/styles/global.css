@@ -1,11 +1,26 @@
 :root {
-	--dark: #18181d;
 	--bg: white;
 	--fg: var(--dark);
-	--dark-fg: black;
-	--btn-bg: #18181d;
+
+	--dark: #18181d;
+	
 	--h1-size: 50px;
 	--h2-size: 35px;
+
+	--dark-fg: black;
+	--btn-bg: #18181d;
+
+	--alkali-metal-series: #6c3b01;
+	--alkaline-earth-metal-series: #846011;
+	--lanthanide-series: #402c17;
+	--actinide-series: #732e4c;
+	--post-transition-metal-series: #003666;
+	--transition-metal-series: #711019;
+	--noble-gas-series: #3a2151;
+	--metalloid-series: #015146;
+	--polyatomic-nonmetal-series: #3e6418;
+	--diatomic-nonmetal-series: #63a125;
+	--unknown-series: #545454;
 }
 
 html { scroll-behavior: smooth; }
@@ -22,9 +37,21 @@ body {
 	background-color: var(--dark);
 
 	--fg: white;
-	--dark-fg: rgb(236, 236, 236);
-	--btn-bg: #26262c;
 	--bg: var(--dark);
+
+	--dark-fg: rgb(236, 236, 236);
+	--btn-bg: #313138;
+
+	--alkali-metal-series: #8b5a20;
+	--alkaline-earth-metal-series: #a37f30;
+	--lanthanide-series: #5f4b36;
+	--actinide-series: #924d6b;
+	--post-transition-metal-series: #1f5585;
+	--transition-metal-series: #902f38;
+	--noble-gas-series: #594070;
+	--metalloid-series: #207065;
+	--polyatomic-nonmetal-series: #5d8337;
+	--unknown-series: #737373;
 }
 
 ::-webkit-scrollbar { width: 4px; }

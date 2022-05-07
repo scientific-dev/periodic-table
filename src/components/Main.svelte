@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { SERIES_COLORS, STATE_COLORS, PROPS, formatPropValue, STATE_COLORS_REV, METALS, NON_METALS } from '../utils/constants';
+    import { SERIES_CSS_CODE, STATE_COLORS, PROPS, formatPropValue, STATE_COLORS_REV, METALS, NON_METALS } from '../utils/constants';
     import Table from './Table.svelte';
 
     export let elements = [];
@@ -122,7 +122,7 @@
     </div>
 
     <div class="series">
-        {#each Object.entries(SERIES_COLORS).slice(0, -1) as [name, color]}
+        {#each Object.entries(SERIES_CSS_CODE).slice(0, -1) as [name, color]}
             <span 
                 class="item" 
                 style="background-color: {color};"
@@ -146,7 +146,7 @@
             {#each Object.entries(STATE_COLORS) as [n, color]}
                 <span 
                     class="item-state" 
-                    style="color: {color}; background-color: {SERIES_COLORS['diatomic nonmetal']};"
+                    style="color: {color}; background-color: {SERIES_CSS_CODE['diatomic nonmetal']};"
                     on:click={() => displayElementsWithState(n)}
                 >
                     <p>1</p>

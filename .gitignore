@@ -4,3 +4,4 @@ global.css.pretty
 /public/build/
 .DS_Store
 /inner/elements.json
+tests/

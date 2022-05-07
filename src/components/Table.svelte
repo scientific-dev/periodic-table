@@ -2,7 +2,6 @@
     import Element from './Element.svelte';
 
     export let elements, displayElementHandler;
-
     let tableRow = [];
 
     const rowIndex = r => {
