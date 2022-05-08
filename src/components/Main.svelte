@@ -7,8 +7,8 @@
 
     export let elements = [];
 
-    let temperature = 0,
-        celsiusTemp = -273,
+    let temperature = 273,
+        celsiusTemp = 0,
         displayElement = elements[0],
         detailsExpanded = false,
         stateDisplay = null,
