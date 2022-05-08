@@ -13,7 +13,7 @@
 <div class="mode-box flex flex-nowrap">
     <p style="margin-top: 1px;">Mode: </p>
 
-    <select bind:value>
+    <select bind:value id="mode-select">
         <option label="Default" default>default</option>
         {#each NUMERIC_PROPS as prop}
             <option label={PROPS[prop]}>{prop}</option>

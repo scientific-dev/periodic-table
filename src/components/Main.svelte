@@ -91,6 +91,8 @@
             } : i => document.getElementById(`elem-${elements[i].sym}`).style.opacity = 1;
 
         gradientDisplay = false;
+        document.getElementById('mode-select').value = 'default';
+        
         for (let i = 0; i < elements.length; i++) f(i);
     }
 
@@ -189,10 +191,6 @@
         </div>
     </div>
 
-    <ModeSelect onChange={x => 
-        (x == 'default') ? normalizeTableDisplay() : gradientValueDisplay(x)
-    }/>
-
     <div class="inputs flex flex-wrap" id="table-scroll">
         <input type="range" min=0 max=6000 default=0 bind:value={temperature}/>
 
@@ -220,6 +218,9 @@
             <p>Max</p>
         </div>
     {/if}
+
+    <ModeSelect onChange={x => (x == 'default') ? normalizeTableDisplay() : gradientValueDisplay(x)}/>
+    <br/>
 
     <div on:click={normalizeTableDisplay}>
         <Table {elements} {displayElementHandler}/>
@@ -272,7 +273,7 @@
     .g-index {
         display: flex;
         flex-wrap: nowrap;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         margin-top: max(-2vh, -2vw);
     }
 
