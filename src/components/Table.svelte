@@ -1,7 +1,7 @@
 <script>
     import Element from './Element.svelte';
 
-    export let elements, displayElementHandler;
+    export let elements, displayElementHandler, gradientDisplay;
     let tableRow = [];
 
     const rowIndex = r => {
@@ -41,7 +41,15 @@
     }
 </script>
 
-<div class="table-wrapper">
+<div class="table-wrapper shadow" id="table-wrapper">
+    {#if gradientDisplay}
+        <div class="g-index">
+            <p>Min</p>
+            <span></span>
+            <p>Max</p>
+        </div>
+    {/if}
+
     <div class="table">
         <div class="row" style="margin-left: calc(var(--font-size) + 6px);">
             {#each Array(18) as _, i}
@@ -71,10 +79,17 @@
 
 <style>
     :global(:root) {
-        --cell-size: calc((100% - 113px) / 18);
+        --cell-size: calc((100% - 123px) / 18);
         --ix-size-full: calc(var(--cell-size) + 5px);
         --cell-size-full: calc(var(--cell-size) + 4px);
         --font-size: 12px;
+    }
+
+    .table-wrapper {
+        padding: 30px 15px;
+        background-color: var(--hl);
+        border-radius: 6px;
+        margin-left: 4px;
     }
 
     .row {
@@ -120,6 +135,20 @@
     .iy p {
         display: block;
     }
+
+    .g-index {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 20px;
+    }
+
+    .g-index span {
+        flex-grow: 1;
+        background: linear-gradient(to left, #000, #63a125);
+        border-radius: 3px;
+    }
+
+    .g-index p { margin: 0 10px; }
 
     @media (max-width: 1200px) {
         .table-wrapper { --font-size: 8px; }

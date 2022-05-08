@@ -72,6 +72,6 @@
 	}
 
 	@media (min-width: 1200px) {
-		.main { padding: 5vw 8vw; }
+		.main { padding: 5vw 6vw; }
 	}
 </style>

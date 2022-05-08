@@ -92,6 +92,7 @@
 
         gradientDisplay = false;
         document.getElementById('mode-select').value = 'default';
+        document.getElementById('table-wrapper').classList.remove('color-white');
         
         for (let i = 0; i < elements.length; i++) f(i);
     }
@@ -111,10 +112,11 @@
             if (!x) {
                 elem.style.opacity = 0.2;
                 elem.style.backgroundColor = '#000';
-            } else elem.style.backgroundColor = mixColor('#63a125', '#000', (max - x) / max).hex;
+            } else elem.style.backgroundColor = mixColor('#74c722', '#000', (max - x) / max).hex;
         }
 
         document.getElementById('table-scroll').scrollIntoView();
+        document.getElementById('table-wrapper').classList.add('color-white');
     }
 
     $: {
@@ -132,7 +134,7 @@
 <svelte:window on:hashchange={onHashChange}/>
 
 <div class="main" id="main">
-    <div class="display-element">
+    <div class="display-element shadow">
         <h3 class="m-0" on:click={() => window.open(displayElement.src)}>{displayElement.nm}</h3>
         <p>{displayElement.des || 'No Description Available'}</p>
 
@@ -191,6 +193,7 @@
         </div>
     </div>
 
+    <p style="margin: 0; margin-bottom: 5px;">Temperature:</p>
     <div class="inputs flex flex-wrap" id="table-scroll">
         <input type="range" min=0 max=6000 default=0 bind:value={temperature}/>
 
@@ -211,19 +214,11 @@
         </div>
     </div>
 
-    {#if gradientDisplay}
-        <div class="g-index">
-            <p>Min</p>
-            <span></span>
-            <p>Max</p>
-        </div>
-    {/if}
-
     <ModeSelect onChange={x => (x == 'default') ? normalizeTableDisplay() : gradientValueDisplay(x)}/>
     <br/>
 
     <div on:click={normalizeTableDisplay}>
-        <Table {elements} {displayElementHandler}/>
+        <Table {elements} {gradientDisplay} {displayElementHandler}/>
     </div>
 
     <hr style="margin-top: 40px"/>
@@ -238,8 +233,8 @@
     .display-element {
         margin-bottom: 20px;
         padding: min(2vw, 2vh);
-        border: 2px dashed var(--fg);
-        border-radius: 5px;
+        background-color: var(--hl);
+        border-radius: 3px;
     }
 
     .display-element *, .item-state * { margin: 0; }
@@ -269,21 +264,6 @@
         font-size: 14px;
         font-weight: bold;
     }
-
-    .g-index {
-        display: flex;
-        flex-wrap: nowrap;
-        margin-bottom: 20px;
-        margin-top: max(-2vh, -2vw);
-    }
-
-    .g-index span {
-        flex-grow: 1;
-        background: linear-gradient(to left, #000, #63a125);
-        border-radius: 3px;
-    }
-
-    .g-index p { margin: 0 10px; }
 
     .series {
         margin-top: 10px;
@@ -331,7 +311,7 @@
     }
 
     .footer a { color: var(--fg); }
-    .inputs { margin-bottom: min(5vw, 5vh); }
+    .inputs { margin-bottom: 10px; }
     .inputs div { margin: 0 5px; }
     .inputs p { margin: 4px; }
 
@@ -339,6 +319,8 @@
         outline: none;
         border-radius: 3px;
         border: 1px solid var(--dark-fg);
+        background-color: var(--fg);
+        color: var(--bg);
     }
 
     input[type=range] {

@@ -22,11 +22,13 @@
 </div>
 
 <style>
-    .mode-box p { margin: 0 10px; }
+    .mode-box p { 
+        margin: 0;
+        margin-right: 10px; 
+    }
 
     .mode-box { 
         margin-bottom: 10px; 
-        margin-left: -10px;
     }
 
     .mode-box select {
