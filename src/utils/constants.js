@@ -37,6 +37,17 @@ export const NON_METALS = [
     'noble gas'
 ];
 
+export const NUMERIC_PROPS = ['n', 'am', 'd', 'b', 'm', 'mh', 'ep'];
+export const NUMERIC_VALUES = {
+    n: [ 1, 119 ],
+    am: [ 1.008, 315 ],
+    d: [ 0, 40.7 ],
+    b: [ 0, 5869 ],
+    m: [ 0, 3823 ],
+    mh: [ 0, 62.7 ],
+    ep: [0, 3.98]
+}
+
 export const PROPS = {
     n: 'Atomic Number',
     apprnc: 'Appearance',
@@ -70,7 +81,8 @@ export const PROPS_FORMATTER = {
     m: formatTempValue,
     d: x => x ? `${x} kg/m³` : 'No Data Available',
     c: x => x || 'No Color',
-    ie: x => x?.join(', ') || 'No Data Available'
+    ie: x => x?.join(', ') || 'No Data Available',
+    am: x => `${x.toString()} u`
 }
 
 export function formatPropValue (id, value) {

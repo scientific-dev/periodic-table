@@ -1,7 +1,9 @@
 <script>
     import { onMount } from 'svelte';
-    import { SERIES_CSS_CODE, STATE_COLORS, PROPS, formatPropValue, STATE_COLORS_REV, METALS, NON_METALS } from '../utils/constants';
+    import { mixColor } from 'colormath.js';
+    import { SERIES_CSS_CODE, STATE_COLORS, PROPS, formatPropValue, STATE_COLORS_REV, METALS, NON_METALS, NUMERIC_PROPS, NUMERIC_VALUES } from '../utils/constants';
     import Table from './Table.svelte';
+    import ModeSelect from './ModeSelect.svelte';
 
     export let elements = [];
 
@@ -9,7 +11,8 @@
         celsiusTemp = -273,
         displayElement = elements[0],
         detailsExpanded = false,
-        stateDisplay = null;
+        stateDisplay = null,
+        gradientDisplay = null;
 
     function onHashChange () {
         let hash = window.location.hash.slice(1).toLowerCase();
@@ -79,8 +82,37 @@
         stateDisplay = false;
         dullSubGroups(1);
 
-        for (let i = 0; i < elements.length; i++) 
-            document.getElementById(`elem-${elements[i].sym}`).style.opacity = 1;
+        let f = gradientDisplay 
+            ? i => {
+                let element = elements[i];
+                let elem = document.getElementById(`elem-${element.sym}`);
+                elem.style.opacity = 1;
+                elem.style.backgroundColor = SERIES_CSS_CODE[element.ctg] || SERIES_CSS_CODE.unknown;
+            } : i => document.getElementById(`elem-${elements[i].sym}`).style.opacity = 1;
+
+        gradientDisplay = false;
+        for (let i = 0; i < elements.length; i++) f(i);
+    }
+
+    function gradientValueDisplay (field) {
+        if (gradientDisplay == field) return normalizeTableDisplay();
+        let [_, max] = NUMERIC_VALUES[field] || [0, 0];
+
+        dullSubGroups(0);
+        gradientDisplay = field;
+
+        for (let i = 0; i < elements.length; i++) {
+            let element = elements[i];
+            let elem = document.getElementById(`elem-${element.sym}`);
+            let x = element[field];
+
+            if (!x) {
+                elem.style.opacity = 0.2;
+                elem.style.backgroundColor = '#000';
+            } else elem.style.backgroundColor = mixColor('#63a125', '#000', (max - x) / max).hex;
+        }
+
+        document.getElementById('table-scroll').scrollIntoView();
     }
 
     $: {
@@ -104,7 +136,7 @@
 
         <div class="values">
             {#each detailsExpanded ? Object.entries(PROPS) : Object.entries(PROPS).slice(0, 3) as [id, name]}
-                <span>
+                <span class="transition" on:click={NUMERIC_PROPS.includes(id) ? gradientValueDisplay(id) : gradientDisplay = false}>
                     <p class="strong">{name}:</p>
                     <p>{formatPropValue(id, displayElement[id])}</p>
                 </span>
@@ -157,7 +189,11 @@
         </div>
     </div>
 
-    <div class="inputs flex flex-wrap">
+    <ModeSelect onChange={x => 
+        (x == 'default') ? normalizeTableDisplay() : gradientValueDisplay(x)
+    }/>
+
+    <div class="inputs flex flex-wrap" id="table-scroll">
         <input type="range" min=0 max=6000 default=0 bind:value={temperature}/>
 
         <div class="flex flex-nowrap">
@@ -176,6 +212,14 @@
             <p>°C</p>
         </div>
     </div>
+
+    {#if gradientDisplay}
+        <div class="g-index">
+            <p>Min</p>
+            <span></span>
+            <p>Max</p>
+        </div>
+    {/if}
 
     <div on:click={normalizeTableDisplay}>
         <Table {elements} {displayElementHandler}/>
@@ -225,6 +269,21 @@
         font-weight: bold;
     }
 
+    .g-index {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 40px;
+        margin-top: max(-2vh, -2vw);
+    }
+
+    .g-index span {
+        flex-grow: 1;
+        background: linear-gradient(to left, #000, #63a125);
+        border-radius: 3px;
+    }
+
+    .g-index p { margin: 0 10px; }
+
     .series {
         margin-top: 10px;
         margin-bottom: 20px;
@@ -260,7 +319,14 @@
     .values span {
         display: block;
         font-size: 14px;
-        margin-left: 5px;
+        padding: 2.5px 5px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .values span:hover {
+        background-color: var(--fg);
+        color: var(--bg);
     }
 
     .footer a { color: var(--fg); }
