@@ -29,6 +29,7 @@
 
     .mode-box { 
         margin-bottom: 10px; 
+        margin-left: 1px;
     }
 
     .mode-box select {

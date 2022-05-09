@@ -144,7 +144,7 @@
 
     .g-index span {
         flex-grow: 1;
-        background: linear-gradient(to left, #000, #63a125);
+        background: linear-gradient(to left, #000, #7be314);
         border-radius: 3px;
     }
 

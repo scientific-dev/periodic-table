@@ -37,7 +37,7 @@ export const NON_METALS = [
     'noble gas'
 ];
 
-export const NUMERIC_PROPS = ['n', 'am', 'd', 'b', 'm', 'mh', 'ep'];
+export const NUMERIC_PROPS = ['n', 'am', 'd', 'b', 'm', 'mh', 'ea', 'ep'];
 export const NUMERIC_VALUES = {
     n: [ 1, 119 ],
     am: [ 1.008, 315 ],
@@ -45,7 +45,8 @@ export const NUMERIC_VALUES = {
     b: [ 0, 5869 ],
     m: [ 0, 3823 ],
     mh: [ 0, 62.7 ],
-    ep: [0, 3.98]
+    ea: [ -223.22, 348.575 ],
+    ep: [ 0, 3.98 ]
 }
 
 export const PROPS = {

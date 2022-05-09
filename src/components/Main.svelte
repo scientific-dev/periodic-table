@@ -14,6 +14,8 @@
         stateDisplay = null,
         gradientDisplay = null;
 
+    const scrollToTable = () => document.getElementById('table-scroll').scrollIntoView();
+
     function onHashChange () {
         let hash = window.location.hash.slice(1).toLowerCase();
         
@@ -60,47 +62,58 @@
 
     function displayElementsWithFilter (f) {
         dullSubGroups();
+        if (gradientDisplay) defaultTableMode();
 
         for (let i = 0; i < elements.length; i++) {
             let element = elements[i];
             document.getElementById(`elem-${element.sym}`).style.opacity = f(element) ? 1 : 0.5;
         }
+
+        scrollToTable();
     }
 
     function displayElementsWithState (s) {
         stateDisplay = s;
         dullSubGroups();
+        if (gradientDisplay) defaultTableMode();
         
         for (let i = 0; i < elements.length; i++) {
             let element = elements[i];
             let elem = document.getElementById(`elem-${element.sym}`);
             elem.style.opacity = STATE_COLORS_REV[getColorForTemperature(element)] == s ? 1 : 0.5;
         }
+
+        scrollToTable();
     }
 
     function normalizeTableDisplay () {
+        if (gradientDisplay) return;
         stateDisplay = false;
         dullSubGroups(1);
+        
+        for (let i = 0; i < elements.length; i++) 
+            document.getElementById(`elem-${elements[i].sym}`).style.opacity = 1;
+    }
 
-        let f = gradientDisplay 
-            ? i => {
-                let element = elements[i];
-                let elem = document.getElementById(`elem-${element.sym}`);
-                elem.style.opacity = 1;
-                elem.style.backgroundColor = SERIES_CSS_CODE[element.ctg] || SERIES_CSS_CODE.unknown;
-            } : i => document.getElementById(`elem-${elements[i].sym}`).style.opacity = 1;
-
+    function defaultTableMode () {
+        dullSubGroups(1);
         gradientDisplay = false;
         document.getElementById('mode-select').value = 'default';
         document.getElementById('table-wrapper').classList.remove('color-white');
-        
-        for (let i = 0; i < elements.length; i++) f(i);
+
+        for (let i = 0; i < elements.length; i++) {
+            let element = elements[i];
+            let elem = document.getElementById(`elem-${element.sym}`);
+            elem.style.opacity = 1;
+            elem.style.backgroundColor = SERIES_CSS_CODE[element.ctg] || SERIES_CSS_CODE.unknown;
+        }
     }
 
     function gradientValueDisplay (field) {
         if (gradientDisplay == field) return normalizeTableDisplay();
-        let [_, max] = NUMERIC_VALUES[field] || [0, 0];
+        let [min, max] = NUMERIC_VALUES[field] || [0, 0];
 
+        let divisor = (min < 0) ? max - min : max;
         dullSubGroups(0);
         gradientDisplay = field;
 
@@ -112,10 +125,13 @@
             if (!x) {
                 elem.style.opacity = 0.2;
                 elem.style.backgroundColor = '#000';
-            } else elem.style.backgroundColor = mixColor('#74c722', '#000', (max - x) / max).hex;
+            } else {
+                elem.style.opacity = 1;
+                elem.style.backgroundColor = mixColor('#7be314', '#000', (max - x) / divisor).hex;
+            }
         }
 
-        document.getElementById('table-scroll').scrollIntoView();
+        scrollToTable();
         document.getElementById('table-wrapper').classList.add('color-white');
     }
 
@@ -140,7 +156,13 @@
 
         <div class="values">
             {#each detailsExpanded ? Object.entries(PROPS) : Object.entries(PROPS).slice(0, 3) as [id, name]}
-                <span class="transition" on:click={NUMERIC_PROPS.includes(id) ? gradientValueDisplay(id) : gradientDisplay = false}>
+                <span 
+                    class="transition" 
+                    on:click={NUMERIC_PROPS.includes(id) ? () => {
+                        gradientValueDisplay(id);
+                        document.getElementById('mode-select').value = id;
+                    } : null}
+                >
                     <p class="strong">{name}:</p>
                     <p>{formatPropValue(id, displayElement[id])}</p>
                 </span>
@@ -214,7 +236,7 @@
         </div>
     </div>
 
-    <ModeSelect onChange={x => (x == 'default') ? normalizeTableDisplay() : gradientValueDisplay(x)}/>
+    <ModeSelect onChange={x => (x == 'default') ? defaultTableMode() : gradientValueDisplay(x)}/>
     <br/>
 
     <div on:click={normalizeTableDisplay}>
@@ -317,10 +339,10 @@
 
     input[type=number] {
         outline: none;
-        border-radius: 3px;
-        border: 1px solid var(--dark-fg);
-        background-color: var(--fg);
-        color: var(--bg);
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--dark-fg);
+        color: var(--fg);
     }
 
     input[type=range] {

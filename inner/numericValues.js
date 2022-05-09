@@ -1,5 +1,5 @@
 const elements = Object.values(require('../public/elements.json'));
-const numericProps = ['n', 'am', 'd', 'b', 'm', 'mh', 'ep'];
+const numericProps = ['n', 'am', 'd', 'b', 'm', 'mh', 'ea', 'ep'];
 const data = {};
 
 numericProps.forEach(x => {
